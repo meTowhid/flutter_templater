@@ -1,0 +1,25 @@
+template_config:
+  override: false
+  generate:
+    - path: assets/fonts
+    - path: assets/images
+    - path: assets/svg_icons
+
+    - path: lib/core/service
+    - path: lib/core/viewmodel
+    - path: lib/core/network
+
+    - path: lib/constants/constants.dart
+      template: singleton
+
+    - path: lib/screen/
+      files:
+        - file: splash.dart
+          template: scaffold
+        - file: login.dart
+          template: scaffold
+        - file: registration.dart
+          template: scaffold
+
+    - path: lib/main.dart
+      template: basicMain

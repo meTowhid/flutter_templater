@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.1
 
 dev_dependencies:
-  project_structure_generator:
+  flutter_templater:
     path: ../
 
 # For information on the generic Dart part of this file, see the
