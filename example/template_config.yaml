@@ -22,4 +22,4 @@ template_config:
           template: scaffold
 
     - path: lib/main.dart
-      template: basicMain
+      gist: https://gist.github.com/meTowhid/b3ccb26497ac84895540185935ed5825
