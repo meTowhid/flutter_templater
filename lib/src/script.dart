@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter_templater/template_config_model.dart';
-import 'package:flutter_templater/custom_exceptions.dart';
-import 'package:flutter_templater/fetch_gist.dart';
-import 'package:flutter_templater/template.dart';
-import 'package:flutter_templater/utils.dart';
+import 'package:flutter_templater/src/template_config_model.dart';
+import 'package:flutter_templater/src/custom_exceptions.dart';
+import 'package:flutter_templater/src/fetch_gist.dart';
+import 'package:flutter_templater/src/template.dart';
+import 'package:flutter_templater/src/utils.dart';
 import 'package:path/path.dart';
 
 bool shouldOverride = false;

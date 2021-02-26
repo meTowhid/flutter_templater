@@ -1,9 +1,10 @@
 import 'package:flutter_templater/flutter_templater.dart' as templater;
+import 'package:flutter_templater/src/utils.dart';
 
 void main(List<String> arguments) {
   print('''
   ═════════════════════════════════
-     FLUTTER TEMPLATER (v0.0.1)                               
+     FLUTTER TEMPLATER (v$packageVersion)                               
   ═════════════════════════════════
   ''');
 

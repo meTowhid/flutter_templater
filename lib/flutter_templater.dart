@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:flutter_templater/constants.dart';
-import 'package:flutter_templater/custom_exceptions.dart';
-import 'package:flutter_templater/fetch_gist.dart';
-import 'package:flutter_templater/script.dart' as script;
-import 'package:flutter_templater/template_config_model.dart';
+import 'package:flutter_templater/src/constants.dart';
+import 'package:flutter_templater/src/custom_exceptions.dart';
+import 'package:flutter_templater/src/fetch_gist.dart';
+import 'package:flutter_templater/src/script.dart' as script;
+import 'package:flutter_templater/src/template_config_model.dart';
 import 'package:yaml/yaml.dart';
 
 Future<void> runFromArguments(List<String> arguments) async {
@@ -29,7 +29,7 @@ Future<void> runFromArguments(List<String> arguments) async {
   try {
     if (templateConfig.configElements.isNotEmpty) {
       await script.run(templateConfig);
-      print('\n✓ Generated Successfully');
+      print('\n✓ Generated successfully from local config file');
     }
   } catch (e) {
     stderr.writeln(e);
@@ -45,10 +45,10 @@ Future<void> runFromArguments(List<String> arguments) async {
       if (yamlConfigFromGist.isNotEmpty == true) {
         final config = parseYamlConfigFile(yamlConfigFromGist, gistLink);
         await script.run(config);
-        print('\n✓ Generated Successfully');
+        print('\n✓ Generated successfully from gist');
+      } else {
+        print('INVALID GIST -> $gistLink');
       }
-    } else {
-      print('INVALID GIST -> $gistLink');
     }
   } catch (e) {
     print('INVALID CONFIG IN GIST -> ${templateConfig.gist}');
@@ -75,10 +75,12 @@ TemplateConfig loadConfigDataFromArgResults(ArgResults argResults, {bool verbose
 }
 
 TemplateConfig parseYamlConfigFile(String yamlString, String fileOptionResult) {
-  final yamlMap = loadYaml(yamlString) as YamlMap;
-
-  final jsonString = json.encode(yamlMap);
-  final asJson = json.decode(jsonString) as Map<String, dynamic>;
-
-  return TemplateConfig.fromJson(asJson[Constant.templateConfig] as Map<String, dynamic>);
+  try {
+    final yamlMap = loadYaml(yamlString) as YamlMap;
+    final jsonMap = json.decode(json.encode(yamlMap));
+    return TemplateConfig.fromJson(jsonMap[Constant.templateConfig] as Map<String, dynamic>);
+  } catch (e) {
+    stderr.writeln(const InvalidYamlException('Failed to parse YAML data'));
+  }
+  return null;
 }
