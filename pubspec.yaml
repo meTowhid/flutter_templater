@@ -1,7 +1,6 @@
 name: flutter_templater
 description: A package which simplifies the task of creating project folder structure and template files.
 version: 0.0.1
-author: Towhid
 homepage: https://github.com/meTowhid/flutter_templater
 
 environment:
@@ -11,3 +10,4 @@ dependencies:
   yaml: ^2.2.1
   args: ^2.0.0
   http: ^0.12.2
+  path: ^1.7.0
