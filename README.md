@@ -12,7 +12,8 @@ Add your Flutter Template configuration to your `pubspec.yaml` or create a new c
 An example is shown below. More complex examples [can be found in the example projects](https://github.com/meTowhid/flutter_templater/tree/master/example).
 ```yaml
 dev_dependencies:
-  flutter_templater: "^0.0.1"
+  flutter_templater:
+    git: https://github.com/meTowhid/flutter_templater.git
 
 template_config:
   generate:
