@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:yaml/yaml.dart';
-
 void printStatus(String message) {
   print('• $message');
 }
@@ -18,10 +14,3 @@ String fileNameToClassName(String fileName) => fileName
     .join('');
 
 bool isFilePath(String path) => !path.endsWith('/') && path.split('/').last.contains('.');
-
-String get packageVersion {
-  final file = File('pubspec.yaml');
-  final yamlString = file.readAsStringSync();
-  final yamlMap = loadYaml(yamlString) as YamlMap;
-  return (yamlMap['version'] as String) ?? '0.0.1';
-}
