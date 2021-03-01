@@ -11,3 +11,5 @@ dependencies:
   yaml: ^2.1.15
   http: ^0.12.2
   path: ^1.7.0
+
+flutter:
