@@ -1,10 +1,13 @@
-enum Template { EmptyClass, Singleton, BasicMain, Scaffold }
+enum Template { EmptyClass, StaticClass, Singleton, BasicMain, Scaffold }
 
 extension TemplateExtentions on Template {
   String get code {
     switch (this) {
       case Template.EmptyClass:
         return _emptyClass;
+        break;
+      case Template.StaticClass:
+        return _staticClass;
         break;
       case Template.Singleton:
         return _singleton;
@@ -24,9 +27,20 @@ extension TemplateExtentions on Template {
 
 }''';
 
-  static const _singleton = '''class #CLASS_NAME# {
+  static const _staticClass = '''class #CLASS_NAME# {
   #CLASS_NAME#._();
 
+}
+''';
+
+  static const _singleton = '''class #CLASS_NAME# {
+  static final #CLASS_NAME# _instance = #CLASS_NAME#._internal();
+
+  factory #CLASS_NAME#() {
+    return _instance;
+  }
+
+  #CLASS_NAME#._internal();
 }
 ''';
 
